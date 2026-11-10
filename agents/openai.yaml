@@ -1,4 +1,4 @@
 interface:
   display_name: "电影感宣传短片"
   short_description: "从主题策划或用户素材剪辑宣传短片，逐关确认需求、文案、分镜、样片与成片"
-  default_prompt: "使用 $cinematic-promo-video，根据我的主题或素材逐关制作宣传短片，先确认需求、文案与分镜中的主线和补充镜头，再审阅关键画面、正式声音和可编辑预览，通过后制作成片。"
+  default_prompt: "使用 $cinematic-promo-video，根据我的主题或素材逐关制作宣传短片，确认需求、文案和主线/补充镜头后，自动打开可改文字、调参数和留言的编辑看板审阅样片，通过后制作成片。"

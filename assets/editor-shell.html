@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>宣传短片 · 编辑与审阅</title>
+<style>
+*{box-sizing:border-box}body{margin:0;color:#e9edf7;background:#10131a;font:14px/1.5 system-ui,"Microsoft YaHei",sans-serif}
+header{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid #303642}
+header strong{font-size:16px}header span{color:#a9b4c9;font-size:12px;margin-left:14px}a{color:#b8caff}button{cursor:pointer}
+main{display:grid;grid-template-columns:minmax(0,1fr) 336px;height:calc(100vh - 58px)}iframe{width:100%;height:100%;border:0;background:white}
+aside{padding:18px;border-left:1px solid #303642;overflow:auto}h2{font-size:16px;margin:0 0 8px}p{color:#a9b4c9;font-size:12px;margin:6px 0 16px}
+label{display:block;color:#c9d2e4;margin:10px 0 5px;font-size:12px}input,textarea,button{font:inherit;border-radius:7px;border:1px solid #3a4254}
+input,textarea{width:100%;background:#1b202b;color:white;padding:9px}textarea{min-height:90px;resize:vertical}
+button{background:#2c3d66;color:white;padding:8px 12px}button.primary{background:#acbdff;color:#121a32;width:100%;font-weight:650;margin-top:12px}
+button:disabled{opacity:.5;cursor:wait}.row{display:flex;gap:10px;align-items:end}.row>div{flex:1}.notice{min-height:38px;font-size:12px;color:#b5c6ff;margin:10px 0}
+.note{border:1px solid #394357;border-radius:8px;padding:12px;margin-top:10px;background:#1a202d}.note .meta{font-size:11px;color:#b1c2e5}.note .text{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:8px}.reply{border-top:1px solid #36425b;margin-top:9px;padding-top:8px;color:#a3dabb;white-space:pre-wrap;font-size:12px}.done{opacity:.75}details{margin-top:14px;font-size:12px}summary{cursor:pointer}
+@media(max-width:1000px){main{grid-template-columns:minmax(0,1fr) 288px}aside{padding:12px}header span{display:none}}
+</style>
+<header><div><strong>编辑与审阅</strong><span id="project">正在连接本地工程</span></div><a id="native" target="_blank" rel="noopener">单独打开原生编辑器 ↗</a></header>
+<main><iframe id="editor" title="视频原生编辑器" allow="autoplay; fullscreen"></iframe><aside>
+<h2>画面留言</h2><p>文字、色彩等在左侧编辑器修改并保存。这里记录需要 Agent 处理的调整，不会自动生成新视频。</p>
+<button id="capture">读取当前选中元素</button>
+<div class="row"><div><label for="time">画面时间（秒）</label><input id="time" type="number" min="0" step="0.01" value="0"></div><div><label for="object">对象 / 场景</label><input id="object" maxlength="1000" placeholder="如 hero-title"></div></div>
+<label for="text">修改意见</label><textarea id="text" maxlength="4000" placeholder="例如：这个标题缩小一点，向右移动"></textarea>
+<button class="primary" id="submit">保存留言</button><div id="notice" class="notice" role="status"></div>
+<h2>审阅记录 <small id="count"></small></h2><div id="notes"></div>
+<details><summary>怎样处理留言</summary><p>Agent 在当前审阅任务中读取待办、修改工程、验证后回复。若聊天已结束，请回到聊天说“处理看板留言”。留言会保留在本项目，不会自动发送给云端模型。</p></details>
+</aside></main>
+<script>
+let session,context={},busy=false;
+const $=id=>document.getElementById(id);
+function notice(message){$('notice').textContent=message}
+async function api(path,body){const options=body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Editor-Token':session.token},body:JSON.stringify(body)};const response=await fetch(path,options);const value=await response.json();if(!response.ok)throw Error(value.error||'操作失败');return value}
+function find(value,key){if(!value||typeof value!=='object')return undefined;if(key in value)return value[key];for(const child of Object.values(value)){const result=find(child,key);if(result!==undefined)return result}}
+async function refresh(){const notes=await api('/api/notes');$('count').textContent=`(${notes.filter(n=>n.status==='open').length} 待处理)`;$('notes').replaceChildren();for(const note of [...notes].reverse()){const card=document.createElement('div');card.className='note'+(note.status==='done'?' done':'');const meta=document.createElement('div');meta.className='meta';meta.textContent=`${Number(note.time).toFixed(2)}s · ${note.object||'全画面'} · ${note.status==='done'?'已处理':'待处理'}`;const text=document.createElement('div');text.className='text';text.textContent=note.text;card.append(meta,text);if(note.reply){const reply=document.createElement('div');reply.className='reply';reply.textContent=note.reply;card.append(reply)}$('notes').append(card)}}
+$('capture').onclick=async()=>{if(busy)return;busy=true;$('capture').disabled=true;try{context=await api('/api/selection',{});const selected=context.selection;const target=selected.target||{};$('object').value=target.hfId||target.selector||find(selected,'hfId')||find(selected,'selector')||'';const time=find(selected,'time')??find(selected,'currentTime')??find(selected,'timelineTime');if(typeof time==='number')$('time').value=time;notice('已读取对象定位，请核对时间后留言')}catch(error){notice(error.message)}finally{busy=false;$('capture').disabled=false}};
+$('submit').onclick=async()=>{const button=$('submit');button.disabled=true;try{await api('/api/notes',{text:$('text').value,time:Number($('time').value),object:$('object').value,context});$('text').value='';context={};notice('留言已保存，等待 Agent 读取处理');await refresh()}catch(error){notice(error.message)}finally{button.disabled=false}};
+async function init(){try{session=await api('/api/session');$('project').textContent=`${session.project} · ${session.engine}`;$('editor').src=session.previewUrl;$('native').href=session.previewUrl;if(session.engine!=='hyperframes'){$('capture').hidden=true;notice('此路线请填写时间和对象后留言')}await refresh();setInterval(()=>refresh().catch(()=>notice('看板连接中断，请重新打开')),3000)}catch(error){notice(error.message)}}init();
+</script>
+</html>

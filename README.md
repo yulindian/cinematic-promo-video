@@ -1,6 +1,6 @@
 # cinematic-promo-video
 
-从一个主题开始策划，或把用户提供的照片、视频、录音与可控代码动画组合成宣传短片的 Codex Skill。默认逐关引导，从需求、文案到分镜、样片和成片；支持用户明确授权后自动推进。版本：1.2.0。
+从一个主题开始策划，或把用户提供的照片、视频、录音与可控代码动画组合成宣传短片的 Codex Skill。默认逐关引导，从需求、文案到分镜、样片和成片；支持用户明确授权后自动推进。版本：1.3.0。
 
 **只给主题也可以。** 不需要先有素材、卖点或脚本；Skill先拟表达方向，协助确认需求，再过文案，随后检索适用素材、提出声音与视觉方案。有素材直接剪，素材不全按需补充。
 
@@ -20,7 +20,7 @@
 
 这是技能源码，不是桌面剪辑软件，也不是单命令自动成片工具。入口为[SKILL.md](SKILL.md)。开发源码目录本身不会自动启用。
 
-需要安装时，先检查项目级及个人技能目录是否存在同名副本；选择一个启用位置，避免多个活跃副本。项目级安装：在目标项目内建立`.agents/skills/cinematic-promo-video/`，把本仓库的SKILL.md、agents/、references/和scripts/放进去。不要复制.git/、outputs/或运行缓存；不要覆盖已有同名技能。无需修改插件缓存或全局环境。
+需要安装时，先检查项目级及个人技能目录是否存在同名副本；选择一个启用位置，避免多个活跃副本。项目级安装：在目标项目内建立`.agents/skills/cinematic-promo-video/`，把本仓库的SKILL.md、agents/、references/、scripts/和assets/放进去。不要复制.git/、outputs/或运行缓存；不要覆盖已有同名技能。无需修改插件缓存或全局环境。
 
 安装后可以这样发起：
 
@@ -44,7 +44,13 @@
 
 分镜先安排主线信息，再用B-roll展示操作细节、情境和结果证据，图形包装另记G；不机械规定A/B比例。纯旁白片保留主线音轨，核心录屏也可承担A-roll，不强加真人。详见[A-roll/B-roll指南](references/a-roll-b-roll.md)。
 
-样片关默认打开所选引擎的可见编辑预览并提供地址，核实当前工程哪些内容能改、如何保存。优先HyperFrames原生编辑器或Remotion Studio，不附带一套新开发的独立编辑软件，也不承诺所有引擎都有huashu式评论回Agent。详见[编辑看板机制与交付](references/editing-dashboard.md)。
+样片工程可运行、以及成片交付时，默认调用附带启动器自动打开“原生编辑器＋本地留言栏”，可改声明过的文字与参数、保存时间/对象留言，并由Agent读取处理、回复完成。无需每条片子重新写看板；不附带一套独立视频剪辑软件。
+
+```sh
+python "/absolute/path/to/skill/scripts/editor.py" open "/absolute/path/to/video-project" --engine hyperframes
+```
+
+需要Python 3.10+和视频项目已有的引擎依赖。文字和参数由原生编辑器保存；HyperFrames预览值要点击Set default，Remotion按Props保存要求处理。留言不会自动唤醒已结束的聊天，返回聊天说“处理看板留言”即可继续。详见[启动与留言命令](references/editor-runtime.md)、[看板机制](references/editing-dashboard.md)和[可运行示例](examples/editor-demo/README.md)。Remotion选中对象目前需手动填写，界面路线尚未端到端实测。
 
 普通配音以自然清晰为目标；临时配音不因样片整体获认可就成为最终声音，正式声线在样片关试听确认。用户叫停视频时停止制作，Skill维护不恢复渲染。
 
@@ -55,6 +61,7 @@
 | 代码画面与预览 | 一个主要引擎：HyperFrames或Remotion；匹配版本的Node、项目锁定依赖与浏览器 |
 | 视频剪辑与导出 | 可用素材、字体和所需音轨；按项目需要使用FFmpeg取段、转码与混音 |
 | 附带文件检查器 | Python标准库、ffprobe；响度检查另需ffmpeg |
+| 自动打开看板与本地留言 | Python 3.10+标准库、项目自己的引擎CLI；复用原生编辑器，不需要模型API或FFmpeg才能留言 |
 | 按需选用 | GSAP、Canvas、语音识别/对齐、TTS、图像生成、云渲染 |
 
 只有使用相应外部服务才需要账号、联网和凭据；完整本地依赖与素材可支持离线制作。详细用途、前置条件与缺项处理见[工具与依赖](references/toolchain.md)。视频项目各自管理依赖与素材，不在技能目录中安装共用媒体环境。
@@ -81,4 +88,6 @@ python scripts/check_delivery.py "/absolute/path/final.mp4" --width 1920 --heigh
 
 核心技能只包含说明、参考资料、UI元数据与检查脚本。examples/额外收录用户明确要求展示的已完成案例及其必要署名，不会自动纳入未来用户的素材。用户原片、独立录音、商业音乐、凭据与完整视频项目不默认上传。原件保留，派生文件与取段记录留在各自视频项目。Git提交不代表取得素材或字体的再分发许可。
 
-outputs/与.tmp/不入库。历史验证报告与核心技能ZIP保留在本地outputs/，可从Git源码重新打包；ZIP不包含大体积案例媒体。仓库同步不会自动安装Skill；案例成片仅按本次明确要求展示。
+outputs/与.tmp/不入库。历史验证报告与核心技能ZIP保留在本地outputs/，可从Git源码重新打包；ZIP不包含大体积案例媒体、编辑示例依赖或测试缓存。安装核心文件时也要包含assets/，否则留言界面无法加载。仓库同步不会自动安装Skill；案例成片仅按本次明确要求展示。
+
+维护者在仓库根目录执行`python -X utf8 -m unittest discover -s tests -v`检查留言持久化、输入错误、HTTP接口、项目隔离、路径与原子保存。实际原生编辑器的界面与保存仍需独立示例验证，单元测试不能代替它。

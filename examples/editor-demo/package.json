@@ -1,0 +1,10 @@
+{
+  "name": "cinematic-promo-editor-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Independent editable dashboard fixture; no video export is performed",
+  "dependencies": {
+    "hyperframes": "0.9.28",
+    "gsap": "3.14.2"
+  }
+}
