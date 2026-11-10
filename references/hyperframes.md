@@ -30,6 +30,10 @@ node node_modules/hyperframes/bin/hyperframes.mjs render -o outputs/final.mp4
 
 素材、字体、CSS排版思路、GSAP参数与粒子算法可保留；动态场景、OM接口、om.js与旧音轨管理需改造。短片段检查字体、直接seek、倒退和所需音轨；目标是视频文件时再验证编码输出，用户只要交互预览时不强制额外编码。随后扩展整片。
 
+## 编辑预览交付
+
+`preview`用于编辑器，轻量`play`只有播放界面；按锁定版本核对命令及项目URL。启动后实际打开可见项目页面并说明可改项，不只交端口或源码路径。变量默认值、预览覆盖值、渲染覆盖值要统一；点选上下文、保存和反馈能力按[编辑看板指南](editing-dashboard.md)验证，不把huashu的OM属性直接移植进来。
+
 ## 官方资料
 
 - 仓库：https://github.com/heygen-com/hyperframes

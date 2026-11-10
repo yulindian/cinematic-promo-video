@@ -34,6 +34,8 @@ macOS/Linux使用./node_modules/.bin/remotion；若项目在工具的project/目
 
 用户只要预览时交付预览；用户要成片、导出或MP4时完成最终文件。浏览器与编码成片分别检查。
 
+Studio不是只启动后台进程：在样片关打开可见项目入口，给出地址与当前可改项。Props控件预览和保存回源码分别验证；defaultProps不可被静态解析时，按匹配版本的官方说明修复或保存到显式项目配置。逐项能力与步骤见[编辑看板](editing-dashboard.md)，不默认承诺huashu式画布改字/评论闭环。
+
 ## 官方资料
 
 - 理念：https://www.remotion.dev/docs/idea

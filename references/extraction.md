@@ -4,7 +4,7 @@
 
 | 原功能 | 本次使用 | 独立替代 |
 | --- | --- | --- |
-| studio | 本地预览 | HyperFrames preview / Remotion Studio |
+| studio | 本地预览；原工具还提供参数、点选、评论、版本等编辑能力，不代表该案例全部使用 | HyperFrames preview / Remotion Studio；按当前版本逐项验证，不能把两者仅有预览当作完整功能等价 |
 | render | 逐帧捕获编码 | 引擎官方导出 |
 | still | 关键帧抽取与人工审阅 | 原生快照＋最终MP4抽帧 |
 | check | 文件、布局、跳转一致性 | 原生检查＋实际画面审阅 |
@@ -17,6 +17,8 @@
 | voice | 实际配音由Edge TTS和自写脚本生成 | 独立TTS/录音及时间点 |
 | learn add/harvest | 偏好保存与回顾 | 项目brief与偏好配置，无需重建全局记忆产品 |
 | inbox/look/done、模板目录、云服务 | 不在本次必需执行链 | 不纳入最小功能 |
+
+后续增加的编辑交付规则见[编辑看板](editing-dashboard.md)：解释原工具如何由HTML契约驱动UI，并要求交付可见入口、可改项及保存验证。没有复制huashu源码或新增独立看板应用，原案例中未使用的功能也不追记为已完成。A-roll/B-roll是新加入的分镜原则，不倒推为该案例原有逐镜标注。
 
 ## 能保留的内容
 

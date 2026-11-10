@@ -24,6 +24,8 @@
 
 用户视频、录音按[用户素材剪辑](user-media-editing.md)先检查，保留原件和源入出点、变速、裁切及原声策略；素材不必转换成静态图。共享镜头表的视频镜头扩展这些字段，不能只有成片时间而无法追溯来源。
 
+分镜按[A-roll/B-roll指南](a-roll-b-roll.md)先安排主线信息与对应证据。逐镜标记rollRole（A/B/G）、narrativeRole与supports；有主线音轨时记录mainNarrativeAudio，素材原声另外记录策略。角色是片段在当前叙事中的作用，不是素材文件固定类别，不要求固定比例。
+
 共享镜头表可以采用以下字段，数值仅为示例：
 
 ```json
@@ -34,10 +36,11 @@
   "fps": 30,
   "durationFrames": 1350,
   "audioMode": "narration-music",
+  "mainNarrativeAudio": "narration-final",
   "seed": 20261110,
   "captionTerminalPunctuation": false,
   "scenes": [
-    {"id": "opening", "from": 0, "durationFrames": 90, "assetId": "city-photo", "title": "主题标题", "layout": "center"}
+    {"id": "opening", "from": 0, "durationFrames": 90, "assetId": "city-photo", "title": "主题标题", "layout": "center", "rollRole": "B", "narrativeRole": "establish-context", "supports": "旁白第一句：介绍城市环境", "audioPolicy": "no-source-audio"}
   ]
 }
 ```
@@ -51,6 +54,10 @@
 引导模式下，在分镜与素材关通过后，先检查开场、密集镜头、高潮、结尾，再做含字体/图片/视频/特效/所需音轨的短片段交用户审阅；样片关通过后再组装整片。自动模式仍执行关键帧/样片的技术验证，按已记录授权推进，不新增逐关等待。首次接入且目标是视频文件时，验证直接跳帧、倒退和编码结果；只要求预览时验证浏览器与跳帧即可，不强制额外编码。不要只看浏览器自动播放。
 
 左右与居中构图服从主体位置，避免遮挡人物、设备或地标。光效使用固定种子，以时间函数生成；不依赖定时器随机累积。短促推镜和落版放在有意义的切点，不用持续闪烁制造气势。
+
+主线声音可连续覆盖B-roll；J/L-cut分别控制声画入出点，不让每次换画面都切断话音。素材自身的同期声按已确认策略处理。先检查“说到的操作/结果是否真的出现”，再增加冲击特效，不能靠包装代替证据。
+
+在样片关交付[可见编辑预览](editing-dashboard.md)，把可换文案、色彩和媒体绑定到真实变量/props，验证保存后预览与渲染共用。界面未验证时如实标明，不为满足看板外观重建整个编辑软件。
 
 母带混音或引擎分轨选一种主路径。配乐平滑避让人声，转场音效峰值受控，片尾自然结束；无旁白时不用人声避让包络。最终AAC编码后再检查响度。
 
