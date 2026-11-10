@@ -1,0 +1,155 @@
+{
+  "engine": "hyperframes",
+  "version": "0.9.28",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "durationFrames": 1350,
+  "captionTerminalPunctuation": false,
+  "scenes": [
+    {
+      "id": "s00-ocean",
+      "key": "ocean",
+      "from": 0,
+      "durationFrames": 98,
+      "cutEndFrame": 91,
+      "assetId": "bay-sunset.jpg",
+      "title": "向世界而行"
+    },
+    {
+      "id": "s01-city",
+      "key": "city",
+      "from": 91,
+      "durationFrames": 53,
+      "cutEndFrame": 137,
+      "assetId": "shenzhen-bay.jpg",
+      "title": "深圳"
+    },
+    {
+      "id": "s02-port",
+      "key": "port",
+      "from": 137,
+      "durationFrames": 65,
+      "cutEndFrame": 195,
+      "assetId": "yantian-port.jpg",
+      "title": "连接远方"
+    },
+    {
+      "id": "s03-road",
+      "key": "road",
+      "from": 195,
+      "durationFrames": 74,
+      "cutEndFrame": 262,
+      "assetId": "futian-night.jpg",
+      "title": "奔向未来"
+    },
+    {
+      "id": "s04-openness",
+      "key": "openness",
+      "from": 262,
+      "durationFrames": 106,
+      "cutEndFrame": 361,
+      "assetId": "yantian-port.jpg",
+      "title": "开放"
+    },
+    {
+      "id": "s05-research",
+      "key": "research",
+      "from": 361,
+      "durationFrames": 76,
+      "cutEndFrame": 430,
+      "assetId": "research.jpg",
+      "title": "探索"
+    },
+    {
+      "id": "s06-manufacture",
+      "key": "manufacture",
+      "from": 430,
+      "durationFrames": 67,
+      "cutEndFrame": 490,
+      "assetId": "manufacturing.jpg",
+      "title": "突破"
+    },
+    {
+      "id": "s07-innovation-city",
+      "key": "innovation-city",
+      "from": 490,
+      "durationFrames": 115,
+      "cutEndFrame": 598,
+      "assetId": "wafer.jpg",
+      "title": "创新"
+    },
+    {
+      "id": "s08-pulse",
+      "key": "pulse",
+      "from": 598,
+      "durationFrames": 123,
+      "cutEndFrame": 714,
+      "assetId": "shenzhen-bay.jpg",
+      "title": "同频"
+    },
+    {
+      "id": "s09-connections",
+      "key": "connections",
+      "from": 714,
+      "durationFrames": 94,
+      "cutEndFrame": 808,
+      "assetId": "bay-sunset.jpg",
+      "title": "连接"
+    },
+    {
+      "id": "s10-burst-open",
+      "key": "burst-open",
+      "from": 808,
+      "durationFrames": 53,
+      "cutEndFrame": 861,
+      "assetId": "yantian-port.jpg",
+      "title": "开放"
+    },
+    {
+      "id": "s11-burst-innov",
+      "key": "burst-innov",
+      "from": 861,
+      "durationFrames": 49,
+      "cutEndFrame": 910,
+      "assetId": "wafer.jpg",
+      "title": "创新"
+    },
+    {
+      "id": "s12-burst-coop",
+      "key": "burst-coop",
+      "from": 910,
+      "durationFrames": 16,
+      "cutEndFrame": 926,
+      "assetId": "bay-sunset.jpg",
+      "title": "合作"
+    },
+    {
+      "id": "s13-hero",
+      "key": "hero",
+      "from": 926,
+      "durationFrames": 59,
+      "cutEndFrame": 978,
+      "assetId": "shenzhen-bay.jpg",
+      "title": "从深圳，连接亚太"
+    },
+    {
+      "id": "s14-ending",
+      "key": "ending",
+      "from": 978,
+      "durationFrames": 289,
+      "cutEndFrame": 1260,
+      "assetId": "shenzhen-bay.jpg",
+      "title": "APEC"
+    },
+    {
+      "id": "s15-signature",
+      "key": "signature",
+      "from": 1260,
+      "durationFrames": 90,
+      "cutEndFrame": 1350,
+      "assetId": "shenzhen-bay.jpg",
+      "title": "@鱼鳞今天AI了吗"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+@鱼鳞今天AI了吗
+AI Coding大赏
+
+素材与许可｜45秒真实画面版 v6
+
+所有背景均为有来源的真实摄影；技术段为通用研发与制造实拍，不表示某家深圳企业或会议现场。
+
+bay-sunset.jpg / File:Sunset in Senzhen Bay (Deep Bay) Bridge.jpg
+作者：Sparktour
+来源：https://commons.wikimedia.org/wiki/File:Sunset_in_Senzhen_Bay_(Deep_Bay)_Bridge.jpg
+许可：CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+修改：横屏裁切、轻微调色、推拉与文字叠加。
+
+research.jpg / File:CNE cleanroom 1.jpg
+作者：Abkorshak
+来源：https://commons.wikimedia.org/wiki/File:CNE_cleanroom_1.jpg
+许可：CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+修改：横屏裁切、轻微调色、推拉与文字叠加。
+
+manufacturing.jpg / File:Factory Automation Robotics Palettizing Bread.jpg
+作者：KUKA Roboter GmbH, Bachmann
+来源：https://commons.wikimedia.org/wiki/File:Factory_Automation_Robotics_Palettizing_Bread.jpg
+许可：Public domain
+修改：横屏裁切、轻微调色、推拉与文字叠加。
+
+wafer.jpg / File:A semiconductor wafer being removed from processing equipment.jpg
+作者：YouTube — Purdue Engineering
+来源：https://commons.wikimedia.org/wiki/File:A_semiconductor_wafer_being_removed_from_processing_equipment.jpg
+许可：CC BY 4.0 https://creativecommons.org/licenses/by/4.0
+修改：横屏裁切、轻微调色、推拉与文字叠加。
+
+futian-night.jpg / File:Futian 20220624.jpg
+作者：Vikarna
+来源：https://commons.wikimedia.org/wiki/File:Futian_20220624.jpg
+许可：CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0
+修改：横屏裁切、轻微调色、推拉与文字叠加。
+
+shenzhen-bay.jpg / 20201112 The skyline at Shenzhen Bay.jpg
+作者：Windmemories
+来源：https://commons.wikimedia.org/wiki/File:20201112_The_skyline_at_Shenzhen_Bay.jpg
+许可：CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/
+修改：横屏裁切、轻微调色、推拉与文字叠加。
+
+yantian-port.jpg / Yantian-port from above.jpg
+作者：Gigel.atat
+来源：https://commons.wikimedia.org/wiki/File:Yantian-port_from_above.jpg
+许可：CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/
+修改：横屏裁切、轻微调色、推拉与文字叠加。
+
+音乐：Long Road Ahead — Kevin MacLeod (incompetech.com)
+来源：https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100588
+Licensed under Creative Commons: By Attribution 4.0 License
+https://creativecommons.org/licenses/by/4.0/
+修改：101.8秒起选用45秒、剪辑、响度处理、配音避让及淡入淡出。
+
+视觉改编按CC BY-SA 4.0提供，保留各原始作者的署名、许可与修改说明；音乐原作按CC BY 4.0提供。
+字体：Noto Sans SC、Noto Serif SC、Inter，许可随assets/fonts提供。
+配音：Microsoft Edge在线语音zh-CN-YunjianNeural，既有配音atempo=1.08，保持音高。
+没有使用官方会标或2026会议现场素材。
+会议信息：
+https://www.sz.gov.cn/cn/xxgk/zfxxgj/zwdt/content/post_12548571.html
+https://www.apec.org/press/news-releases/2025/china-unveils-apec-2026-theme-and-priorities-in-shenzhen
+
+新增金色粒子、光晕、扫光和光斑为本工程代码生成的叠加效果；实景摄影来源不变。新增低鼓与空气掠过音效为本工程代码合成。
+
+HyperFrames优化版：摄影素材不变；制造照片重新JPEG编码，字体与素材原许可保留；粒子、扫光、镜头编排与转场代码已改为原生HyperFrames执行。
